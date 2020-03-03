@@ -124,6 +124,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 										<td class="td-it" style="color: white;">
 											<strong>En tiempo</strong>
+											<div class="progress" style="height: 14px;">
+											  <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+											</div>
 										</td>
 
 									</tr>
@@ -624,7 +627,16 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								$(this).css('color', 'red');
 							}
 						});
-		
+
+						var value = new Date();
+						var hours = value.getHours();
+						console.log(hours);
+
+						$('td').each(function(){
+							if($(this).text().trim() <= hours){
+								$(this).closest('tr').remove();
+							}
+						});
 					});
 				</script>
 		<!-- //smooth scrolling-bottom-to-top -->
