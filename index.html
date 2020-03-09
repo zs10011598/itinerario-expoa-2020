@@ -632,11 +632,12 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 						var value = new Date();
 						var minutes = value.getMinutes();
 						var hours = value.getHours();
+						/*alert(hours + ":" + minutes);*/
 
-						var elements = document.getElementsByTagName("p");
+						var elements = document.getElementsByTagName("P");
 
 						for (i = 0; i < elements.length; i++) {
-							var time = document.getElementsByTagName("p")[i].innerHTML;
+							var time = document.getElementsByTagName("P")[i].innerHTML;
 							var hour = "" + time[8] + time[9];
 							var minute = "" + time[11] + time[12];
 							/*console.log(hour + ":" + minute);*/
@@ -649,6 +650,18 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 								elements[i].textContent = "red";
 							}
 						}
+
+						/*$('p').each(function(){
+
+							if ($(this).text()[8] + $(this).text()[9] = hours) {
+								if ($(this).text()[11] + $(this).text()[12] < minutes) {
+									$(this).text("red");
+								}
+							}
+							if ($(this).text()[8] + $(this).text()[9] < hours) {
+								$(this).text("red");
+							}
+						});*/
 
 						$('td').each(function(){
 
