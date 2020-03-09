@@ -114,7 +114,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 											<strong>CHEDRAUI</strong>
 										</td>
 
-										<td class="td-it" id="ha" style="color: white;">
+										<td class="td-it" id="h" style="color: white;">
 											<strong><p>11:20 - 12:40</p></strong>
 										</td>
 
@@ -406,7 +406,7 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 										</td>
 
 										<td class="td-it" style="color: white;">
-											<strong><p>17:20 - 18:50</p></strong>
+											<strong><p>17:20 - 20:50</p></strong>
 										</td>
 
 										<td class="td" width="12%" style="background-color: #cbcd42">
@@ -630,21 +630,29 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 						/*Aqui empieza el proceso para remover fila en caso de que la hora sea menor a la actual */
 						var value = new Date();
+						var minutes = value.getMinutes();
 						var hours = value.getHours();
 
-						var all = document.getElementById("t-content");
-						var times = document.getElementsByTagName("P");
-						for (i = 13; i > 0; i--) {
-							var char = "" + times[9] + times[10];
-							console.log(char);
-							if(char.trim() <= hours){
-								times[i].style.backgroundColor = "red";
+						var elements = document.getElementsByTagName("p");
+
+						for (i = 0; i < elements.length; i++) {
+							var time = document.getElementsByTagName("p")[i].innerHTML;
+							var hour = "" + time[8] + time[9];
+							var minute = "" + time[11] + time[12];
+							/*console.log(hour + ":" + minute);*/
+							if (hour = hours){
+								if (minute < minutes) {
+									elements[i].textContent = "red";
+								}
+							}
+							if (hour < hours) {
+								elements[i].textContent = "red";
 							}
 						}
 
-						$('#td-it').each(function(){
+						$('td').each(function(){
 
-							if($(this).style.backgroundColor == "red"){
+							if($(this).text().trim() === "red"){
 								$(this).closest('tr').remove();
 							}
 
